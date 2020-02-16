@@ -1,22 +1,17 @@
 package com.cidenet.hulk.store.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cidenet.hulk.store.enums.EstadoActivoInactivoEnum;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "CLIENTES")
@@ -51,10 +46,6 @@ public class Cliente implements Serializable {
 	@Column(name = "ESTADO_CLIENTE", nullable = false, length = 8)
 	private EstadoActivoInactivoEnum estadoCliente;
 	
-	@JsonIgnoreProperties(value = {"cliente"})
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="cliente", cascade=CascadeType.ALL)
-	private List<Venta> lstVentasCliente;
-
 	public Integer getCodigoCliente() {
 		return codigoCliente;
 	}
@@ -117,14 +108,6 @@ public class Cliente implements Serializable {
 
 	public void setEstadoCliente(EstadoActivoInactivoEnum estadoCliente) {
 		this.estadoCliente = estadoCliente;
-	}
-
-	public List<Venta> getLstVentasCliente() {
-		return lstVentasCliente;
-	}
-
-	public void setLstVentasCliente(List<Venta> lstVentasCliente) {
-		this.lstVentasCliente = lstVentasCliente;
 	}
 
 	@Override
@@ -196,7 +179,7 @@ public class Cliente implements Serializable {
 		return "Cliente [codigoCliente=" + codigoCliente + ", numeroIdentificacion=" + numeroIdentificacion
 				+ ", apellidos=" + apellidos + ", nombres=" + nombres + ", telefono=" + telefono + ", direccion="
 				+ direccion + ", correoElectronico=" + correoElectronico + ", estadoCliente=" + estadoCliente
-				+ ", lstVentasCliente=" + lstVentasCliente + "]";
+				+ "]";
 	}
 
 }

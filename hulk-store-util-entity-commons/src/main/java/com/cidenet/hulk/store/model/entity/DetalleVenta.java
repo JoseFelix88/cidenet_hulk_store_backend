@@ -50,6 +50,26 @@ public class DetalleVenta implements Serializable {
 	@Column(name = "FECHA_REGISTRO", nullable = false)
 	private LocalDateTime fechaRegistro;
 
+	
+	
+	/**
+	 * DetalleVenta
+	 */
+	public DetalleVenta(Venta venta, Producto producto, Integer cantidadVenta, Integer valorUnidadVenta,
+			Integer valorTotalVenta, LocalDateTime fechaRegistro) {
+		super();
+		this.venta = venta;
+		this.producto = producto;
+		this.cantidadVenta = cantidadVenta;
+		this.valorUnidadVenta = valorUnidadVenta;
+		this.valorTotalVenta = valorTotalVenta;
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public DetalleVenta() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getCodigoDetalleVenta() {
 		return codigoDetalleVenta;
 	}

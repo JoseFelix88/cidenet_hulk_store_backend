@@ -36,7 +36,6 @@ public class Venta implements Serializable {
 	@Column(name = "FECHA_VENTA", updatable = false)
 	private LocalDateTime fechaVenta;
 	
-	@JsonIgnoreProperties(value = {"lstVentasCliente"})
 	@ManyToOne
 	@JoinColumn(name="CODIGO_CLIENTE", foreignKey=@ForeignKey(name="FK_VENTA_CLIENTE"), nullable=false)
 	private Cliente cliente;
@@ -129,7 +128,7 @@ public class Venta implements Serializable {
 	@Override
 	public String toString() {
 		return "Venta [codigoVenta=" + codigoVenta + ", fechaVenta=" + fechaVenta + ", cliente=" + cliente
-				+ ", totalVenta=" + totalVenta + ", lstDetalleVenta=" + lstDetalleVenta + "]";
+				+ ", totalVenta=" + totalVenta + "]";
 	}
 
 }

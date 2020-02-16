@@ -15,8 +15,6 @@ import com.cidenet.hulk.store.model.entity.Compra;
 import com.cidenet.hulk.store.model.entity.DetalleCompra;
 import com.cidenet.hulk.store.model.entity.Producto;
 import com.cidenet.hulk.store.model.entity.Proveedor;
-import com.cidenet.hulk.store.ws.compras.client.ProductoFeingClient;
-import com.cidenet.hulk.store.ws.compras.client.ProveedorFeingClient;
 import com.cidenet.hulk.store.ws.compras.repository.CompraRepository;
 import com.cidenet.hulk.store.ws.compras.service.CompraService;
 

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableFeignClients
+@EnableFeignClients(value = {"com.cidenet.hulk.store.clients"})
 @EntityScan(basePackages = {"com.cidenet.hulk.store.model.entity"})
 @SpringBootApplication
 public class HulkStoreWsVentasApplication {

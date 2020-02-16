@@ -15,6 +15,15 @@ public class DetalleVentaDTO implements Serializable {
 	
 	private Integer valorUnidad;
 
+	public DetalleVentaDTO() {}
+
+	public DetalleVentaDTO(Integer codigoProducto, Integer cantidadVenta, Integer valorUnidad) {
+		super();
+		this.codigoProducto = codigoProducto;
+		this.cantidadVenta = cantidadVenta;
+		this.valorUnidad = valorUnidad;
+	}
+
 	public Integer getCodigoProducto() {
 		return codigoProducto;
 	}

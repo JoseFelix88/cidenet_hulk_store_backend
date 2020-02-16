@@ -2,7 +2,7 @@ package com.cidenet.hulk.store.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.List;
 
 public class VentaDTO implements Serializable {
 
@@ -17,7 +17,7 @@ public class VentaDTO implements Serializable {
 	
 	private Integer totalVenta;
 	
-	private DetalleVentaDTO[] listDetalleVenta;
+	private List<DetalleVentaDTO> listDetalleVenta;
 
 	public LocalDate getFechaVenta() {
 		return fechaVenta;
@@ -43,18 +43,30 @@ public class VentaDTO implements Serializable {
 		this.totalVenta = totalVenta;
 	}
 
-	public DetalleVentaDTO[] getListDetalleVenta() {
+
+	/**
+	 * @return listDetalleVenta
+	 */
+	public List<DetalleVentaDTO> getListDetalleVenta() {
 		return listDetalleVenta;
 	}
 
-	public void setListDetalleVenta(DetalleVentaDTO[] listDetalleVenta) {
+	/**
+	 * @param listDetalleVenta 
+	 */
+	public void setListDetalleVenta(List<DetalleVentaDTO> listDetalleVenta) {
 		this.listDetalleVenta = listDetalleVenta;
 	}
 
+	/** 
+	 * <p>Metodo <b>toString</b> encargado de imprimir los valores de cada campo.</p>
+	 * 
+	 */
 	@Override
 	public String toString() {
 		return "VentaDTO [fechaVenta=" + fechaVenta + ", codigoCliente=" + codigoCliente + ", totalVenta=" + totalVenta
-				+ ", listDetalleVenta=" + Arrays.toString(listDetalleVenta) + "]";
+				+ ", listDetalleVenta=" + listDetalleVenta + "]";
 	}
+
 	
 }
