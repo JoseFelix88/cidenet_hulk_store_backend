@@ -3,6 +3,7 @@
  */
 package com.cidenet.hulk.store.ws.compras.repository;
 
+<<<<<<< HEAD
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,13 @@ public class CompraRepositoryTest {
 	public void registrarCompra() {
 		
 	}
+=======
+/**
+ * @author Thaliana
+ *
+ * 6:53:19 p. m. 2020
+ */
+public class CompraRepositoryTest {
+
+>>>>>>> refs/remotes/origin/master
 }
