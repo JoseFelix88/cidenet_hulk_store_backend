@@ -77,6 +77,7 @@ public class VentaServiceImpl implements VentaService {
 				detalleVenta.setValorUnidadVenta(detalleVentaDto.getValorUnidad());
 				detalleVenta.setValorTotalVenta(detalleVentaDto.getCantidadVenta() * detalleVentaDto.getValorUnidad());
 				ventaRepository.guardarDetalleVenta(detalleVenta);
+				productoFeingClient.removerStockProducto(producto.getCodigoProducto(), detalleVenta.getCantidadVenta());
 			}
 			LOGGER.info(ventaRegistrada);
 			return ventaRegistrada;

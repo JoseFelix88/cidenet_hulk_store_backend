@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cidenet.hulk.store.clients.ProductoFeingClient;
+import com.cidenet.hulk.store.clients.ProveedorFeingClient;
 import com.cidenet.hulk.store.dto.CompraDTO;
 import com.cidenet.hulk.store.dto.DetalleCompraDTO;
 import com.cidenet.hulk.store.model.entity.Compra;
@@ -26,14 +28,20 @@ public class CompraServiceImpl implements CompraService {
 	@Autowired 
 	private CompraRepository compraRepository;
 	
+	@Autowired 
+	private ProveedorFeingClient proveedorFeingClient;
+	
+	@Autowired 
+	private ProductoFeingClient productoFeingClient;
+	
+	
 	@Transactional
 	@Override
 	public Compra guardarCompra(CompraDTO compraDto) {
 		try {
 			Compra compra = new Compra();
 			compra.setFechaCompra(LocalDateTime.now());
-			Proveedor proveedor = new Proveedor();
-			proveedor.setCodigoProveedor(compraDto.getCodigoProveedor());
+			Proveedor proveedor = proveedorFeingClient.findById(compraDto.getCodigoProveedor());
 			compra.setProveedor(proveedor);
 			compra.setTotalCompra(compraDto.getTotalCompra());
 			compra.setNumeroFacturaCompra(compraDto.getNumeroFacturaCompra());
@@ -42,13 +50,13 @@ public class CompraServiceImpl implements CompraService {
 			for (DetalleCompraDTO detalleCompraDto : compraDto.getListDetalleCompra()) {
 				DetalleCompra detalleCompra = new DetalleCompra();
 				detalleCompra.setCompra(compraRegistrada);
-				Producto producto = new Producto();
-				producto.setCodigoProducto(Long.valueOf(detalleCompraDto.getCodigoProducto()));
+				Producto producto = productoFeingClient.findById(detalleCompraDto.getCodigoProducto());
 				detalleCompra.setProducto(producto);
 				detalleCompra.setCantidadCompra(detalleCompraDto.getCantidadCompra());
 				detalleCompra.setCostoUnidadCompra(detalleCompraDto.getValorUnidad());
 				detalleCompra.setCostoTotalCompra(detalleCompraDto.getCantidadCompra() * detalleCompraDto.getValorUnidad());
 				compraRepository.guardarDetalleCompra(detalleCompra);
+				productoFeingClient.adicionarStockProducto(producto.getCodigoProducto(), detalleCompra.getCantidadCompra());
 			}
 			LOGGER.info(compraRegistrada);
 			return compraRegistrada;
