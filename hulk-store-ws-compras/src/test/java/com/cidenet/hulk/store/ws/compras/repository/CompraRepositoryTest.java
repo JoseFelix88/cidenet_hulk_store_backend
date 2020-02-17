@@ -13,12 +13,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.cidenet.hulk.store.model.entity.Compra;
 import com.cidenet.hulk.store.ws.compras.HulkStoreWsComprasApplication;
 
 /**
  * @author Thaliana
  *
- * 6:53:19 p. m. 2020
+ *         6:53:19 p. m. 2020
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -27,15 +28,12 @@ import com.cidenet.hulk.store.ws.compras.HulkStoreWsComprasApplication;
 @WebAppConfiguration
 public class CompraRepositoryTest {
 
-	@Autowired 
+	@Autowired
 	private CompraRepository compraRepository;
-	
+
 	@Test
 	public void registrarCompra() {
-<<<<<<< master
 		Compra compra = new Compra();
-=======
->>>>>>> b9bbfa5 creacion del metodo test registrar compra.
 		
 	}
 }
