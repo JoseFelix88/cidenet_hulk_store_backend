@@ -34,5 +34,6 @@ public class CompraRepositoryTest {
 	@Test
 	public void registrarCompra() {
 		Compra compra = new Compra();
+		
 	}
 }
