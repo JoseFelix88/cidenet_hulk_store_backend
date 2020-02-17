@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.cidenet.hulk.store.model.entity.Compra;
 import com.cidenet.hulk.store.ws.compras.HulkStoreWsComprasApplication;
 
 /**
@@ -32,10 +33,7 @@ public class CompraRepositoryTest {
 	
 	@Test
 	public void registrarCompra() {
-<<<<<<< master
 		Compra compra = new Compra();
-=======
->>>>>>> b9bbfa5 creacion del metodo test registrar compra.
 		
 	}
 }
