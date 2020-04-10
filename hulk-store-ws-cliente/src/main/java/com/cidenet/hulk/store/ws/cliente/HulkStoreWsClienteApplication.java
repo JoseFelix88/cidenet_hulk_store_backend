@@ -11,5 +11,6 @@ public class HulkStoreWsClienteApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HulkStoreWsClienteApplication.class, args);
 	}
+	
 
 }

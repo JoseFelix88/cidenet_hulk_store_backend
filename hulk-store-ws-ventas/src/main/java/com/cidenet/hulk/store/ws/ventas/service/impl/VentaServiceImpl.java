@@ -39,22 +39,26 @@ public class VentaServiceImpl implements VentaService {
 	 */
 	@Autowired
 	private VentaRepository ventaRepository;
-	
+
 	/**
-	 * Inyección del cliente que comunica el servicio cliente con la venta registrada.
+	 * Inyección del cliente que comunica el servicio cliente con la venta
+	 * registrada.
 	 */
-	@Autowired 
-	private ClienteFeingClient clienteFeignClient;
-	
+//	@Autowired
+//	private ClienteFeingClient clienteFeignClient;
+
 	/**
-	 * Inyeccion del client producto que comunica los productos registrados para el registro de la venta.
+	 * Inyeccion del client producto que comunica los productos registrados para el
+	 * registro de la venta.
 	 */
 	@Autowired
 	private ProductoFeingClient productoFeingClient;
 
-
-	/** 
-	 * <p>Metodo <b>guardarVenta</b> encargado de registrar en BD las ventas realizadas.</p>
+	/**
+	 * <p>
+	 * Metodo <b>guardarVenta</b> encargado de registrar en BD las ventas
+	 * realizadas.
+	 * </p>
 	 * 
 	 */
 	@Transactional
@@ -62,7 +66,9 @@ public class VentaServiceImpl implements VentaService {
 	public Venta guardarVenta(VentaDTO ventaDto) {
 		try {
 			Venta venta = new Venta();
-			Cliente cliente = clienteFeignClient.findById(ventaDto.getCodigoCliente());
+//			Cliente cliente = clienteFeignClient.findById(ventaDto.getCodigoCliente());
+			Cliente cliente = new Cliente();
+			cliente.setCodigoCliente(ventaDto.getCodigoCliente());
 			venta.setCliente(cliente);
 			venta.setFechaVenta(LocalDateTime.now());
 			venta.setTotalVenta(ventaDto.getTotalVenta());
@@ -70,12 +76,14 @@ public class VentaServiceImpl implements VentaService {
 			for (DetalleVentaDTO detalleVentaDto : ventaDto.getListDetalleVenta()) {
 				DetalleVenta detalleVenta = new DetalleVenta();
 				detalleVenta.setVenta(ventaRegistrada);
-				Producto producto = productoFeingClient.findById(detalleVentaDto.getCodigoProducto());
+				Producto producto = new Producto();
+				producto.setCodigoProducto(detalleVentaDto.getCodigoProducto());
 				detalleVenta.setProducto(producto);
 				detalleVenta.setCantidadVenta(detalleVentaDto.getCantidadVenta());
 				detalleVenta.setFechaRegistro(LocalDateTime.now());
 				detalleVenta.setValorUnidadVenta(detalleVentaDto.getValorUnidad());
 				detalleVenta.setValorTotalVenta(detalleVentaDto.getCantidadVenta() * detalleVentaDto.getValorUnidad());
+				LOGGER.info(detalleVenta);
 				ventaRepository.guardarDetalleVenta(detalleVenta);
 				productoFeingClient.removerStockProducto(producto.getCodigoProducto(), detalleVenta.getCantidadVenta());
 			}
@@ -88,8 +96,11 @@ public class VentaServiceImpl implements VentaService {
 
 	}
 
-	/** 
-	 * <p>Metodo <b>obtenerVentaById</b> encargado de consultar una venta por el codigo.</p>
+	/**
+	 * <p>
+	 * Metodo <b>obtenerVentaById</b> encargado de consultar una venta por el
+	 * codigo.
+	 * </p>
 	 * 
 	 */
 	@Override

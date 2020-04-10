@@ -3,6 +3,7 @@ package com.cidenet.hulk.store.clients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.cidenet.hulk.store.model.entity.Producto;
 
@@ -29,7 +30,7 @@ public interface ProductoFeingClient {
 	 * </p>
 	 * 
 	 */
-	@GetMapping(path = "/productos/search/add-stock/{codigoProducto}/{stock}")
+	@GetMapping(path = "/productos/add-stock/{codigoProducto}/{stock}")
 	public void adicionarStockProducto(@PathVariable("codigoProducto") Long codigoProducto,
 			@PathVariable("stock") Integer stock);
 
@@ -40,7 +41,7 @@ public interface ProductoFeingClient {
 	 * </p>
 	 * 
 	 */
-	@GetMapping(path = "/productos/search/remove-stock/{codigoProducto}/{stock}")
+	@PutMapping(path = "/productos/remove-stock/{codigoProducto}/{stock}")
 	public void removerStockProducto(@PathVariable("codigoProducto") Long codigoProducto,
 			@PathVariable("stock") Integer stock);
 

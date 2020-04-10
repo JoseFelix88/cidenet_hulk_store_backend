@@ -42,10 +42,6 @@ public class Cliente implements Serializable {
 	@Column(name = "CORREO_ELECTRONICO", nullable = true, length = 100)
 	private String correoElectronico;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "ESTADO_CLIENTE", nullable = false, length = 8)
-	private EstadoActivoInactivoEnum estadoCliente;
-	
 	public Integer getCodigoCliente() {
 		return codigoCliente;
 	}
@@ -102,14 +98,6 @@ public class Cliente implements Serializable {
 		this.correoElectronico = correoElectronico;
 	}
 
-	public EstadoActivoInactivoEnum getEstadoCliente() {
-		return estadoCliente;
-	}
-
-	public void setEstadoCliente(EstadoActivoInactivoEnum estadoCliente) {
-		this.estadoCliente = estadoCliente;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,7 +106,6 @@ public class Cliente implements Serializable {
 		result = prime * result + ((codigoCliente == null) ? 0 : codigoCliente.hashCode());
 		result = prime * result + ((correoElectronico == null) ? 0 : correoElectronico.hashCode());
 		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
-		result = prime * result + ((estadoCliente == null) ? 0 : estadoCliente.hashCode());
 		result = prime * result + ((nombres == null) ? 0 : nombres.hashCode());
 		result = prime * result + ((numeroIdentificacion == null) ? 0 : numeroIdentificacion.hashCode());
 		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
@@ -154,8 +141,6 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!direccion.equals(other.direccion))
 			return false;
-		if (estadoCliente != other.estadoCliente)
-			return false;
 		if (nombres == null) {
 			if (other.nombres != null)
 				return false;
@@ -178,8 +163,8 @@ public class Cliente implements Serializable {
 	public String toString() {
 		return "Cliente [codigoCliente=" + codigoCliente + ", numeroIdentificacion=" + numeroIdentificacion
 				+ ", apellidos=" + apellidos + ", nombres=" + nombres + ", telefono=" + telefono + ", direccion="
-				+ direccion + ", correoElectronico=" + correoElectronico + ", estadoCliente=" + estadoCliente
-				+ "]";
+				+ direccion + ", correoElectronico=" + correoElectronico + "]";
 	}
+
 
 }

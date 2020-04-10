@@ -9,7 +9,7 @@ public class DetalleVentaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer codigoProducto;
+	private Long codigoProducto;
 	
 	private Integer cantidadVenta;
 	
@@ -17,18 +17,18 @@ public class DetalleVentaDTO implements Serializable {
 
 	public DetalleVentaDTO() {}
 
-	public DetalleVentaDTO(Integer codigoProducto, Integer cantidadVenta, Integer valorUnidad) {
+	public DetalleVentaDTO(Long codigoProducto, Integer cantidadVenta, Integer valorUnidad) {
 		super();
 		this.codigoProducto = codigoProducto;
 		this.cantidadVenta = cantidadVenta;
 		this.valorUnidad = valorUnidad;
 	}
 
-	public Integer getCodigoProducto() {
+	public Long getCodigoProducto() {
 		return codigoProducto;
 	}
 
-	public void setCodigoProducto(Integer codigoProducto) {
+	public void setCodigoProducto(Long codigoProducto) {
 		this.codigoProducto = codigoProducto;
 	}
 

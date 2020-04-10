@@ -73,9 +73,9 @@ public class VentaServiceTest {
 			ventaDto.setFechaVenta(LocalDate.now());
 			ventaDto.setTotalVenta(100000);
 			List<DetalleVentaDTO> lstDetalleVenta = new ArrayList<>();
-			DetalleVentaDTO detalle1 = new DetalleVentaDTO(1, 20, 20000);
-			DetalleVentaDTO detalle2 = new DetalleVentaDTO(1, 12, 19800);
-			DetalleVentaDTO detalle3 = new DetalleVentaDTO(1, 24, 17000);
+			DetalleVentaDTO detalle1 = new DetalleVentaDTO(1L, 20, 20000);
+			DetalleVentaDTO detalle2 = new DetalleVentaDTO(1L, 12, 19800);
+			DetalleVentaDTO detalle3 = new DetalleVentaDTO(1L, 24, 17000);
 			lstDetalleVenta.add(detalle1);
 			lstDetalleVenta.add(detalle2);
 			lstDetalleVenta.add(detalle3);
