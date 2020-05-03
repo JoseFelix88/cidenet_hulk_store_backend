@@ -25,7 +25,7 @@ public class HulkStoreGatewayZuulServerApplication {
 	public CorsConfigurationSource corsConfigurationSource() {
 		System.out.println("Configurando CORS desde zuul gateway...");
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200")); // <-- you may change "*"
+		configuration.setAllowedOrigins(Collections.singletonList("${server.origen.cors}")); // <-- you may change "*"
 		configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
 		configuration.setAllowCredentials(true);
 		configuration.setAllowedHeaders(

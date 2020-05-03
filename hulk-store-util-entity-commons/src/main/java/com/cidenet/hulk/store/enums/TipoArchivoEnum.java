@@ -3,7 +3,7 @@ package com.cidenet.hulk.store.enums;
 /**
  * <p>Clase utilizada para determinar el valor constante perteneciente a TipoArchivoEnum.</p>
  * <p>Propiedades EXT_ARCHIVO_EXCEL, EXT_ARCHIVO_EXCEL_97, entre otros.</p>
- * @author Indra 
+ * @author Thaliana 
  */
 public enum TipoArchivoEnum {
 	/*

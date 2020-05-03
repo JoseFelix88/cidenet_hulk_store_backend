@@ -5,14 +5,10 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.cidenet.hulk.store.enums.EstadoActivoInactivoEnum;
 
 @Entity
 @Table(name = "PRODUCTO")
@@ -53,10 +49,6 @@ public class Producto implements Serializable {
 	@Column(name = "FECHA_REGISTRO", nullable = false)
 	private LocalDateTime fechaRegistro;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "ESTADO", nullable = false, length = 8)
-	private EstadoActivoInactivoEnum estado;
-
 	public Long getCodigoProducto() {
 		return codigoProducto;
 	}
@@ -129,14 +121,6 @@ public class Producto implements Serializable {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public EstadoActivoInactivoEnum getEstado() {
-		return estado;
-	}
-
-	public void setEstado(EstadoActivoInactivoEnum estado) {
-		this.estado = estado;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,7 +129,6 @@ public class Producto implements Serializable {
 		result = prime * result + ((codigoProducto == null) ? 0 : codigoProducto.hashCode());
 		result = prime * result + ((costoUnitario == null) ? 0 : costoUnitario.hashCode());
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((fechaActualizacion == null) ? 0 : fechaActualizacion.hashCode());
 		result = prime * result + ((fechaRegistro == null) ? 0 : fechaRegistro.hashCode());
 		result = prime * result + ((precioVenta == null) ? 0 : precioVenta.hashCode());
@@ -183,8 +166,6 @@ public class Producto implements Serializable {
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
 			return false;
-		if (estado != other.estado)
-			return false;
 		if (fechaActualizacion == null) {
 			if (other.fechaActualizacion != null)
 				return false;
@@ -218,7 +199,7 @@ public class Producto implements Serializable {
 		return "Producto [codigoProducto=" + codigoProducto + ", codigoBarras=" + codigoBarras + ", descripcion="
 				+ descripcion + ", stockActual=" + stockActual + ", costoUnitario=" + costoUnitario + ", precioVenta="
 				+ precioVenta + ", valorUtilidad=" + valorUtilidad + ", fechaActualizacion=" + fechaActualizacion
-				+ ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + "]";
+				+ ", fechaRegistro=" + fechaRegistro + "]";
 	}
 
 }

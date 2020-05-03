@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -29,7 +30,8 @@ public class DetalleVenta implements Serializable {
 	@Column(name = "CODIGO_DETALLE_VENTA", updatable = false)
 	private Long codigoDetalleVenta;
 
-	@JsonIgnoreProperties(value = {"lstDetalleVenta"})
+//	@JsonIgnore
+	@JsonIgnoreProperties(value = {"lstDetalleVenta", "cliente"})
 	@ManyToOne
 	@JoinColumn(name = "CODIGO_VENTA", foreignKey = @ForeignKey(name = "FK_DETALLE_VENTA"), nullable = false)
 	private Venta venta;

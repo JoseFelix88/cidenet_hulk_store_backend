@@ -5,6 +5,7 @@ package com.cidenet.hulk.store.cliente.repository;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,8 +21,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.cidenet.hulk.store.enums.EstadoActivoInactivoEnum;
 import com.cidenet.hulk.store.model.entity.Cliente;
+import com.cidenet.hulk.store.model.entity.proxy.ReporteDetalleComprasClienteProxy;
 import com.cidenet.hulk.store.ws.cliente.HulkStoreWsClienteApplication;
 import com.cidenet.hulk.store.ws.cliente.repository.ClienteRepository;
 
@@ -51,7 +52,6 @@ public class clienteRepositoryTest {
 			cliente.setNombres("Marina");
 			cliente.setDireccion("Nariño");
 			cliente.setTelefono("233 344 22 33");
-			cliente.setEstadoCliente(EstadoActivoInactivoEnum.ACTIVO);
 			cliente.setNumeroIdentificacion("100299900");
 			Cliente clienteRegistrado = clienteRepository.save(cliente);
 			LOGGER.info("Se ha registrado la siguiente información: {}", clienteRegistrado);
@@ -90,6 +90,18 @@ public class clienteRepositoryTest {
 			if (cliente.isPresent()) {
 				LOGGER.info(cliente);
 			}
+			assertTrue(true);
+		} catch (Exception e) {
+			LOGGER.error("El test de consulta presenta el siguiente error: {}", e);
+			assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void obtenerBalanceUltimasComprasCliente() {
+		try {
+			List<ReporteDetalleComprasClienteProxy> lstComprasCliente = clienteRepository.obtenerBalanceUltimasComprasCliente(2);
+			lstComprasCliente.forEach(compras -> LOGGER.info(compras));
 			assertTrue(true);
 		} catch (Exception e) {
 			LOGGER.error("El test de consulta presenta el siguiente error: {}", e);
